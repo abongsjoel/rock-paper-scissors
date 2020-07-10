@@ -3,26 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        button {
-            background-color: #398639;
-            color: white;
-            border: 1px solid green;
-            padding: 8px 16px;
-            font-weight: 600;
-        }
-
-        button:hover {
-            background-color: #97e897;
-            color: black;
-        }
-    </style>
     <title>Document</title>
 </head>
 <body>
-    <h1>Rock Paper Scissors</h1>
-    <button>Play Game</button>
-
     <script>
         function computerPlay(){
             const num = Math.floor(Math.random() * 9) + 1;
@@ -62,7 +45,7 @@
             for(let i=0; i<5; i++){
                 let playerSelection = prompt('Enter Paper or Scissors or Rock');
 
-                while(playerSelection !=='Paper' && playerSelection !== 'Scissors' && playerSelection !== 'Rock'){
+                while(playerSelection.toLowerCase() !=='paper' && playerSelection.toLowerCase() !== 'scissors' && playerSelection.toLowerCase() !== 'rock'){
                     playerSelection = prompt('Invalid Input! Please enter Paper or Scissors or Rock');
                 }
 
@@ -84,11 +67,7 @@
 
         }
 
-        let btn = document.querySelector('button');
-
-        btn.onclick = game;
-
-        // game()
+        game();
     </script>
 </body>
 </html>
