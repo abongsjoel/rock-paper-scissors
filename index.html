@@ -9,7 +9,21 @@
     <h1>Project: Rock Paper Scissors</h1>
 
     <script>
-        
+        function computerPlay(){
+            const num = Math.floor(Math.random() * 9) + 1;
+            console.log(num);
+
+            if(num <= 3) {
+                return 'Rock';
+            } else if (num <= 6 ) {
+                return 'Paper';
+            } else {
+                return 'Scissors'
+            }
+        }
+        // computerPlay();
+        const value = computerPlay();
+        console.log(value);
     </script>
 </body>
 </html>
