@@ -3,10 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        button {
+            background-color: #398639;
+            color: white;
+            border: 1px solid green;
+            padding: 8px 16px;
+            font-weight: 600;
+        }
+
+        button:hover {
+            background-color: #97e897;
+            color: black;
+        }
+    </style>
     <title>Document</title>
 </head>
 <body>
-    <h1>Project: Rock Paper Scissors</h1>
+    <h1>Rock Paper Scissors</h1>
+    <button>Play Game</button>
 
     <script>
         function computerPlay(){
@@ -28,22 +43,52 @@
             const playerSelectionCapitalised = playerSelectionLower.replace(playerSelectionFirstLetter, playerSelectionFirstLetter.toUpperCase());
 
             if(playerSelectionLower === computerSelectionLower){
-                return "There is a tie";
+                return {points: 1, message: "There is a tie"};
             } else if(playerSelectionLower === 'rock' && computerSelectionLower === 'scissors' ) {
-                return "You win, Rock beats Scissors";
+                return {points: 3, message: "You win, Rock beats Scissors"};
             } else if(playerSelectionLower === 'paper' && computerSelectionLower === 'rock' ) {
-                return "You win, Paper beats Rock";
+                return {points: 3, message: "You win, Paper beats Rock"};
             } else if(playerSelectionLower === 'scissors' && computerSelectionLower === 'paper' ) {
-                return "You win, Scissors beats Paper";
+                return {points: 3, message: "You win, Scissors beats Paper"};
             } else {
-                return `You Lose! ${computerSelection} beats ${playerSelectionCapitalised}`;
+                return {points: 0, message: `You Lose! ${computerSelection} beats ${playerSelectionCapitalised}`};
             }
         }
 
-        const playerSelection = 'PAPER';
-        const computerSelection = computerPlay();
 
-        console.log(playRound(playerSelection, computerSelection));
+        function game(){
+            let score = 0;
+
+            for(let i=0; i<5; i++){
+                let playerSelection = prompt('Enter Paper or Scissors or Rock');
+
+                while(playerSelection !=='Paper' && playerSelection !== 'Scissors' && playerSelection !== 'Rock'){
+                    playerSelection = prompt('Invalid Input! Please enter Paper or Scissors or Rock');
+                }
+
+                const computerSelection = computerPlay();
+
+                const roundresult = playRound(playerSelection, computerSelection);
+
+                console.log(`Round ${i+1}: ${roundresult.message}`);
+
+                score += Number(roundresult.points);
+
+            }
+
+            if(score >= 8) {
+                console.log(`Congratulations! You Win. Your score is ${score}`);
+            } else {
+                console.log(`What a shame! You Loss. Your score is ${score}`);
+            }
+
+        }
+
+        let btn = document.querySelector('button');
+
+        btn.onclick = game;
+
+        // game()
     </script>
 </body>
 </html>
