@@ -11,7 +11,6 @@
     <script>
         function computerPlay(){
             const num = Math.floor(Math.random() * 9) + 1;
-            console.log(num);
 
             if(num <= 3) {
                 return 'Rock';
@@ -21,9 +20,30 @@
                 return 'Scissors'
             }
         }
-        // computerPlay();
-        const value = computerPlay();
-        console.log(value);
+
+        function playRound(playerSelection, computerSelection){
+            const playerSelectionLower = playerSelection.toLowerCase();
+            const computerSelectionLower = computerSelection.toLowerCase();
+            const playerSelectionFirstLetter = playerSelection.slice(0,1);
+            const playerSelectionCapitalised = playerSelectionLower.replace(playerSelectionFirstLetter, playerSelectionFirstLetter.toUpperCase());
+
+            if(playerSelectionLower === computerSelectionLower){
+                return "There is a tie";
+            } else if(playerSelectionLower === 'rock' && computerSelectionLower === 'scissors' ) {
+                return "You win, Rock beats Scissors";
+            } else if(playerSelectionLower === 'paper' && computerSelectionLower === 'rock' ) {
+                return "You win, Paper beats Rock";
+            } else if(playerSelectionLower === 'scissors' && computerSelectionLower === 'paper' ) {
+                return "You win, Scissors beats Paper";
+            } else {
+                return `You Lose! ${computerSelection} beats ${playerSelectionCapitalised}`;
+            }
+        }
+
+        const playerSelection = 'PAPER';
+        const computerSelection = computerPlay();
+
+        console.log(playRound(playerSelection, computerSelection));
     </script>
 </body>
 </html>
