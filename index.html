@@ -3,6 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .btn {
+            background-color: #1ab1ef; 
+            color: white; 
+            cursor: pointer; 
+            border: none; 
+            padding: 8px 16px; 
+            margin: 0 4px; 
+            font-weight: bold;
+        }
+
+        .btn:hover {
+            background-color: skyblue;
+            box-shadow: 2px 2px 2px rgba(0,0,0,0.1);
+        }
+    </style>
     <title>Rock, Paper, Scissors Game</title>
 </head>
 <body>
@@ -102,9 +118,11 @@
             //Only Display winner when there is no tie
             if(yourpoints >= 5 && yourpoints !== compoints) {
                 h2.textContent = `Congratulations! You Win with a score of ${yourpoints}`;
+                h2.setAttribute('style', 'color: green');
                 playAgain();
             } else if(compoints >=5 && yourpoints !== compoints) {
                 h2.textContent = `Oh Sorry, computer wins with a score of ${compoints}`;
+                h2.style.color = "red";
                 playAgain();
             }
 
@@ -115,6 +133,7 @@
         function playAgain() {
             const playBtn = document.createElement('button');
             playBtn.textContent = 'Play Again';
+            playBtn.classList.add('btn');
             results.appendChild(playBtn);
 
             btns.forEach(btn => {
@@ -131,6 +150,7 @@
         function game() {   
             btns.forEach(btn => {
                 btn.addEventListener('click', play );
+                btn.classList.add('btn')
             });
     
             results.appendChild(div);
