@@ -14,12 +14,13 @@
         <button id='scissors'>Scissors</button>
     </section>
 
-    <section id='results'>
+    <section id="scores">
         <h3>
             Your Score: <span class="yourscore"> 0</span> 
             &nbsp;&nbsp;&nbsp;
             Computer's Score: <span class="comscore"> 0</span>
         </h3>
+        <div id="results"></div>
     </section>
 
 
@@ -83,7 +84,7 @@
             comscore.textContent = `${compoints}`;
         }
 
-        function game() {
+        function play() {
             const computerSelection = computerPlay();
             const roundresult = playRound(this.id, computerSelection);
             
@@ -113,12 +114,12 @@
             results.appendChild(playBtn);
 
             btns.forEach(btn => {
-                 btn.removeEventListener('click', game);
+                 btn.removeEventListener('click', play);
             })
         }
 
         btns.forEach(btn => {
-            btn.addEventListener('click', game );
+            btn.addEventListener('click', play );
         });
 
         results.appendChild(div);
