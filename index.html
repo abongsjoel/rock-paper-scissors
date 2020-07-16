@@ -6,6 +6,24 @@
     <title>Document</title>
 </head>
 <body>
+    <h3>Rock, Paper, Scissors Game</h3>
+
+    <section id="buttons">
+        <button id='rock'>Rock</button>
+        <button id='paper'>Paper</button>
+        <button id='scissors'>Scissors</button>
+    </section>
+
+    <section id="scores">
+        <h3>
+            Your Score: <span class="yourscore"> 0</span> 
+            &nbsp;&nbsp;&nbsp;
+            Computer's Score: <span class="comscore"> 0</span>
+        </h3>
+        <div id="results"></div>
+    </section>
+
+
     <script>
         function computerPlay(){
             const num = Math.floor(Math.random() * 9) + 1;
@@ -37,37 +55,84 @@
                 return {points: 0, message: `You Lose! ${computerSelection} beats ${playerSelectionCapitalised}`};
             }
         }
+       
+        const btns = document.querySelectorAll('#buttons>button');
+        const results = document.querySelector('#results');
+        const div = document.createElement('div');
+        
+        let yourpoints = 0;
+        let compoints = 0;
+        let i = 0;
 
+        function updateScore(points){
+            const yourscore = document.querySelector('.yourscore');
+            const comscore = document.querySelector('.comscore');
 
-        function game(){
-            let score = 0;
+            yourpoints += Number(points);
+            yourscore.textContent = `${yourpoints}`;
 
-            for(let i=0; i<5; i++){
-                let playerSelection = prompt('Enter Paper or Scissors or Rock');
+            let compoint = 1;
 
-                while(playerSelection.toLowerCase() !=='paper' && playerSelection.toLowerCase() !== 'scissors' && playerSelection.toLowerCase() !== 'rock'){
-                    playerSelection = prompt('Invalid Input! Please enter Paper or Scissors or Rock');
-                }
+            if(points === 0) {
+                compoint = 3;
+            } else if(points === 3) {
+                compoint = 0;
+            } 
 
-                const computerSelection = computerPlay();
+            compoints += compoint;
+            comscore.textContent = `${compoints}`;
+        }
 
-                const roundresult = playRound(playerSelection, computerSelection);
+        function play() {
+            const computerSelection = computerPlay();
+            const roundresult = playRound(this.id, computerSelection);
+            
+            updateScore(roundresult.points);
+            const p = document.createElement('p');
+            p.textContent = `Round ${++i}: ${roundresult.message}`;
+            div.appendChild(p);
 
-                console.log(`Round ${i+1}: ${roundresult.message}`);
-
-                score += Number(roundresult.points);
-
+            const h2 = document.createElement('h2');
+            
+            //Only Display winner when there is no tie
+            if(yourpoints >= 5 && yourpoints !== compoints) {
+                h2.textContent = `Congratulations! You Win with a score of ${yourpoints}`;
+                playAgain();
+            } else if(compoints >=5 && yourpoints !== compoints) {
+                h2.textContent = `Oh Sorry, computer wins with a score of ${compoints}`;
+                playAgain();
             }
 
-            if(score >= 8) {
-                console.log(`Congratulations! You Win. Your score is ${score}`);
-            } else {
-                console.log(`What a shame! You Loss. Your score is ${score}`);
-            }
+            div.appendChild(h2);
 
         }
 
+        function playAgain() {
+            const playBtn = document.createElement('button');
+            playBtn.textContent = 'Play Again';
+            results.appendChild(playBtn);
+
+            btns.forEach(btn => {
+                 btn.removeEventListener('click', play);
+            })
+
+            playBtn.addEventListener('click', clearScreen);
+        }
+
+        function clearScreen() {
+            location.reload();
+        }
+
+        function game() {   
+            btns.forEach(btn => {
+                btn.addEventListener('click', play );
+            });
+    
+            results.appendChild(div);
+        }
+
         game();
+
     </script>
 </body>
 </html>
