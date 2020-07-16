@@ -42,22 +42,22 @@
         function game(){
             let score = 0;
 
-            for(let i=0; i<5; i++){
-                let playerSelection = prompt('Enter Paper or Scissors or Rock');
+            // for(let i=0; i<5; i++){
+            //     let playerSelection = prompt('Enter Paper or Scissors or Rock');
 
-                while(playerSelection.toLowerCase() !=='paper' && playerSelection.toLowerCase() !== 'scissors' && playerSelection.toLowerCase() !== 'rock'){
-                    playerSelection = prompt('Invalid Input! Please enter Paper or Scissors or Rock');
-                }
+            //     while(playerSelection.toLowerCase() !=='paper' && playerSelection.toLowerCase() !== 'scissors' && playerSelection.toLowerCase() !== 'rock'){
+            //         playerSelection = prompt('Invalid Input! Please enter Paper or Scissors or Rock');
+            //     }
 
-                const computerSelection = computerPlay();
+            //     const computerSelection = computerPlay();
 
-                const roundresult = playRound(playerSelection, computerSelection);
+            //     const roundresult = playRound(playerSelection, computerSelection);
 
-                console.log(`Round ${i+1}: ${roundresult.message}`);
+            //     console.log(`Round ${i+1}: ${roundresult.message}`);
 
-                score += Number(roundresult.points);
+            //     score += Number(roundresult.points);
 
-            }
+            // } 
 
             if(score >= 8) {
                 console.log(`Congratulations! You Win. Your score is ${score}`);
