@@ -13,6 +13,8 @@
         <button id='paper'>Paper</button>
         <button id='scissors'>Scissors</button>
     </section>
+
+
     <script>
         function computerPlay(){
             const num = Math.floor(Math.random() * 9) + 1;
@@ -46,17 +48,26 @@
         }
 
         let score = 0;
-        let i=0;
+        let i = 0;
 
         const btns = document.querySelectorAll('section>button');
+        const section = document.querySelector('section');
+        const div = document.createElement('div');
 
         btns.forEach(btn => {
             btn.addEventListener('click', () => {
                 const computerSelection = computerPlay();
                 const roundresult = playRound(btn.id, computerSelection);
+
+                const p = document.createElement('p');
+                p.textContent = `Round ${++i}: ${roundresult.message}`;
+                div.appendChild(p);
+
                 console.log(`Round ${++i}: ${roundresult.message}`);
             });
         });
+
+        section.appendChild(div);
 
 
         function game(){
