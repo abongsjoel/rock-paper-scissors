@@ -12,6 +12,14 @@
         <button id='rock'>Rock</button>
         <button id='paper'>Paper</button>
         <button id='scissors'>Scissors</button>
+
+        <div id='scores'>
+            <h3>
+                Your Score: <span class="yourscore"> 0</span> 
+                &nbsp;&nbsp;&nbsp;
+                Computer's Score: <span class="comscore"> 0</span>
+            </h3>
+        </div>
     </section>
 
 
@@ -47,27 +55,54 @@
             }
         }
 
-        let score = 0;
-        let i = 0;
-
+        
         const btns = document.querySelectorAll('section>button');
         const section = document.querySelector('section');
         const div = document.createElement('div');
+        
+        let yourpoints = 0;
+        let compoints = 0;
+        let i = 0;
+
+        function updateScore(points){
+            const yourscore = document.querySelector('.yourscore');
+            const comscore = document.querySelector('.comscore');
+
+            yourpoints += Number(points);
+            yourscore.textContent = `${yourpoints}`;
+
+            let compoint = 1;
+
+            if(points === 0) {
+                compoint = 3;
+            } else if(points === 3) {
+                compoint = 0;
+            } 
+
+            compoints += compoint;
+            comscore.textContent = `${compoints}`;
+        }
 
         btns.forEach(btn => {
             btn.addEventListener('click', () => {
                 const computerSelection = computerPlay();
                 const roundresult = playRound(btn.id, computerSelection);
-
+                
+                updateScore(roundresult.points);
                 const p = document.createElement('p');
                 p.textContent = `Round ${++i}: ${roundresult.message}`;
                 div.appendChild(p);
 
-                console.log(`Round ${++i}: ${roundresult.message}`);
+                if(yourpoints >= 5) {
+                    console.log(`Congratulations! You Win. Your score is ${yourpoints}`);
+                } else if(compoints >=5) {
+                    console.log(`Oh Sorry, computer wins with a score of ${comspoints}`);
+                }
             });
         });
 
         section.appendChild(div);
+
 
 
         function game(){
