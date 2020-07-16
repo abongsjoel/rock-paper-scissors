@@ -83,57 +83,49 @@
             comscore.textContent = `${compoints}`;
         }
 
-        btns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                const computerSelection = computerPlay();
-                const roundresult = playRound(btn.id, computerSelection);
-                
-                updateScore(roundresult.points);
-                const p = document.createElement('p');
-                p.textContent = `Round ${++i}: ${roundresult.message}`;
-                div.appendChild(p);
+        function game() {
+            const computerSelection = computerPlay();
+            console.log(this);
+            const roundresult = playRound(this.id, computerSelection);
+            
+            updateScore(roundresult.points);
+            const p = document.createElement('p');
+            p.textContent = `Round ${++i}: ${roundresult.message}`;
+            div.appendChild(p);
 
-                if(yourpoints >= 5) {
-                    console.log(`Congratulations! You Win. Your score is ${yourpoints}`);
-                } else if(compoints >=5) {
-                    console.log(`Oh Sorry, computer wins with a score of ${comspoints}`);
-                }
-            });
+            const h2 = document.createElement('h2');
+            
+            if(yourpoints >= 5 && yourpoints !== compoints) {
+                h2.textContent = `Congratulations! You Win with a score of ${yourpoints}`;
+                playAgain();
+            } else if(compoints >=5 && yourpoints !== compoints) {
+                h2.textContent = `Oh Sorry, computer wins with a score of ${compoints}`;
+                playAgain();
+            }
+
+            div.appendChild(h2);
+
+        }
+
+        function playAgain() {
+            const playBtn = document.createElement('button');
+            playBtn.textContent = 'Play Again';
+            section.appendChild(playBtn);
+
+            btns.forEach(btn => {
+                 btn.removeEventListener('click', game);
+            })
+        }
+
+        btns.forEach(btn => {
+            btn.addEventListener('click', game );
         });
 
         section.appendChild(div);
 
 
 
-        function game(){
-            let score = 0;
 
-            // for(let i=0; i<5; i++){
-            //     let playerSelection = prompt('Enter Paper or Scissors or Rock');
-
-            //     while(playerSelection.toLowerCase() !=='paper' && playerSelection.toLowerCase() !== 'scissors' && playerSelection.toLowerCase() !== 'rock'){
-            //         playerSelection = prompt('Invalid Input! Please enter Paper or Scissors or Rock');
-            //     }
-
-            //     const computerSelection = computerPlay();
-
-            //     const roundresult = playRound(playerSelection, computerSelection);
-
-            //     console.log(`Round ${i+1}: ${roundresult.message}`);
-
-            //     score += Number(roundresult.points);
-
-            // } 
-
-            if(score >= 8) {
-                console.log(`Congratulations! You Win. Your score is ${score}`);
-            } else {
-                console.log(`What a shame! You Loss. Your score is ${score}`);
-            }
-
-        }
-
-        game();
     </script>
 </body>
 </html>
