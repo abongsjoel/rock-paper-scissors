@@ -55,8 +55,7 @@
                 return {points: 0, message: `You Lose! ${computerSelection} beats ${playerSelectionCapitalised}`};
             }
         }
-
-        
+       
         const btns = document.querySelectorAll('#buttons>button');
         const results = document.querySelector('#results');
         const div = document.createElement('div');
@@ -116,16 +115,23 @@
             btns.forEach(btn => {
                  btn.removeEventListener('click', play);
             })
+
+            playBtn.addEventListener('click', clearScreen);
         }
 
-        btns.forEach(btn => {
-            btn.addEventListener('click', play );
-        });
+        function clearScreen() {
+            location.reload();
+        }
 
-        results.appendChild(div);
+        function game() {   
+            btns.forEach(btn => {
+                btn.addEventListener('click', play );
+            });
+    
+            results.appendChild(div);
+        }
 
-
-
+        game();
 
     </script>
 </body>
