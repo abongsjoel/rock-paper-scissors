@@ -6,6 +6,13 @@
     <title>Document</title>
 </head>
 <body>
+    <h3>Rock, Paper, Scissors Game</h3>
+
+    <section>
+        <button id='rock'>Rock</button>
+        <button id='paper'>Paper</button>
+        <button id='scissors'>Scissors</button>
+    </section>
     <script>
         function computerPlay(){
             const num = Math.floor(Math.random() * 9) + 1;
@@ -37,6 +44,19 @@
                 return {points: 0, message: `You Lose! ${computerSelection} beats ${playerSelectionCapitalised}`};
             }
         }
+
+        let score = 0;
+        let i=0;
+
+        const btns = document.querySelectorAll('section>button');
+
+        btns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const computerSelection = computerPlay();
+                const roundresult = playRound(btn.id, computerSelection);
+                console.log(`Round ${++i}: ${roundresult.message}`);
+            });
+        });
 
 
         function game(){
