@@ -1,0 +1,15 @@
+.btn {
+    background-color: #1ab1ef; 
+    color: white; 
+    cursor: pointer; 
+    border: none; 
+    padding: 8px 16px; 
+    margin: 0 4px; 
+    font-weight: bold;
+    outline: skyblue;
+}
+
+.btn:hover {
+    background-color: skyblue;
+    box-shadow: 2px 2px 2px rgba(0,0,0,0.1);
+}
