@@ -1,5 +1,5 @@
 
-# TJ Calculator
+# Rock, Papper, Scissors Game
 
 > In this project I built a simple rock, paper, scissors game
 
