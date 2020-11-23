@@ -5,7 +5,9 @@
 
 ![screenshot](../master/screenshot.png)
 
-In this project, i used plain HTML, CSS and JavaScript to build a simple rock, paper, scissors game. When you start the game, you are shown a screen with three buttons labelled, rock, paper, and scissors. Clicking on anyone of them is like rolling a dice and you are playing against the computer (a random function). A win is 3 points for you and zero point for the computer; a tie is a point each; and a loss is 0 points for you and 3 points for the computer. The first person to reach 5 points wins.
+In this project, I used plain HTML, CSS and JavaScript to build a simple rock, paper, scissors game.
+
+When you start the game, you are shown a screen with three buttons labelled, rock, paper, and scissors. Clicking on anyone of them is like rolling a dice and you are playing against the computer (a random function). A win is 3 points for you and zero point for the computer; a tie is a point each; and a loss is 0 points for you and 3 points for the computer. The first person to reach 5 points wins.
 
 ## Live Demo 
 
