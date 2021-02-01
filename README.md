@@ -36,7 +36,7 @@ When you start the game, you are shown a screen with three buttons labelled, roc
 
 Contributions, issues, and feature requests are welcome!
 
-Feel free to check the [issues page](https://github.com/abongsjoel/tic-tac-toe/issues).
+Feel free to check the [issues page](https://github.com/abongsjoel/rock-paper-scissors/issues).
 
 ## Show your support
 
