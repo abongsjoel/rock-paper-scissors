@@ -32,9 +32,17 @@ When you start the game, you are shown a screen with three buttons labelled, roc
 - [The Odin Project](https://www.theodinproject.com)
 - [w3schools](https://www.w3schools.com)
 
+## Contributing
+
+Contributions, issues, and feature requests are welcome!
+
+Feel free to check the [issues page](https://github.com/abongsjoel/tic-tac-toe/issues).
+
 ## Show your support
+
 Give a ⭐️ if you like this project!
 
 ## License
+
   <p>This project is <a href="../master/LICENSE">MIT</a> licensed.</p>
 
