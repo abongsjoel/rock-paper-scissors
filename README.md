@@ -33,9 +33,7 @@ When you start the game, you are shown a screen with three buttons labelled, roc
 - [w3schools](https://www.w3schools.com)
 
 ## Show your support
-<p> Give a 
-  <g-emoji class="g-emoji" alias="star" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/2b50.png"><img class="emoji" alt="star" height="20" width="20" src="https://github.githubassets.com/images/icons/emoji/unicode/2b50.png"></g-emoji>
-  if you like this project!</p>
+Give a ⭐️ if you like this project!
 
 ## License
   <p>This project is <a href="../master/LICENSE">MIT</a> licensed.</p>
